@@ -1,0 +1,51 @@
+# Twilio Hosted Numbers Setup Script
+
+## Overview
+This script is designed to automate the setup process for Twilio Hosted Numbers. It utilizes the Twilio API to create orders for bulk hosted numbers based on predefined configurations.
+
+## Requirements
+- Node.js installed on your system.
+- Twilio Account SID and Auth Token.
+- Environment variables set in a `.env` file (see `.env.example` for reference).
+
+## Installation
+2. Install dependencies using npm:
+npm install
+
+markdown
+Copy code
+
+## Configuration
+1. Copy the `.env.example` file and rename it to `.env`.
+2. Fill in the required Twilio and configuration details in the `.env` file.
+
+## Usage
+1. Ensure your `.env` file is correctly configured.
+2. Run the script using the following command:
+node script.js
+
+markdown
+Copy code
+
+## Script Workflow
+1. It constructs objects for each phone number specified in the `numbers` array, along with callback URLs.
+2. Gathers additional configuration details from the `.env` file.
+3. Constructs a JSON payload containing the order details.
+4. Sends a POST request to Twilio's API to create the bulk order.
+5. Logs the result of the submission or any errors encountered.
+
+## Environment Variables
+- `TWILIO_ACCOUNT_SID`: Your Twilio Account SID.
+- `TWILIO_AUTH_TOKEN`: Your Twilio Auth Token.
+- `FRIENDLY_NAME`: Friendly name for the order.
+- `NOTIFICATION_EMAIL`: Email address for notifications.
+- `ADDRESS_SID`: SID of the Twilio address.
+- `CONTACT_TITLE`: Title of the contact associated with the order.
+- `CONTACT_PHONE_NUMBER`: Phone number of the contact associated with the order.
+- `STATUS_CALLBACK_URL`: Callback URL for status updates.
+
+## Notes
+- Ensure your Twilio account has the necessary permissions to create bulk hosted numbers orders.
+- Review Twilio's pricing and terms of service before running the script in a production environment.
+- Ensure that you add your phone numbers under the "numbers" array in script.js
+- This API has a limit of 1000 number requests, so if you have more than that, you will need to run this multiple times
